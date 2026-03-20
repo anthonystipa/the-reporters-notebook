@@ -1,31 +1,17 @@
 <script lang="ts">
+	import Footer from "../../components/Footer.svelte";
+	import NavBar from "../../components/NavBar.svelte";
 
-
-function handleSubscribe(e: { preventDefault: () => void; }) {
-    e.preventDefault(); 
-    alert('Redirecting to secure payment portal...');
-}
+    function handleSubscribe(e: { preventDefault: () => void; }) {
+        e.preventDefault(); 
+        alert('Redirecting to secure payment portal...');
+    }
 </script>
 
-<!-- Main Navigation/Header -->
-<nav class="navbar glass-effect">
-    <div class="nav-content">
-        <h1 class="logo">Reporter's <span>Notebook</span></h1>
-        <div class="nav-links">
-            <a href="/#feed">News Feed</a>
-            <a href="subscribe" class="active">Subscribe Now</a>
-            <a href="about">Who We Are</a>
-            <button class="primary-btn pulse-glow"
-                onclick={()=> window.location.href='mailto:anthonystipa@gmail.com'}>
-                Verify/Submit Update
-            </button>
-        </div>
-    </div>
-</nav>
+<NavBar newsFeedUrl={'/#feed'} currentSection={'subscribe'}/>
 
 <!-- Main Content Area -->
 <main class="container">
-
     <header class="page-header">
         <span class="header-badge">Premium Access</span>
         <h2>Get the Full Story</h2>
@@ -33,7 +19,6 @@ function handleSubscribe(e: { preventDefault: () => void; }) {
             Unlock exclusive real-time updates, complete journalist tracking, and in-depth analysis of healthcare media trends.
         </p>
     </header>
-
     <section class="pricing-section">
         <div class="pricing-card glass-effect">
             <h3>Monthly Pass</h3>
@@ -59,14 +44,9 @@ function handleSubscribe(e: { preventDefault: () => void; }) {
             </form>
         </div>
     </section>
-
 </main>
 
-<footer class="site-footer">
-    <p>This website is property of Quickstudy Consulting, LLC. Any reproduction, counterfeit, or unauthorized copying or distribution is prohibited.</p>
-</footer>
-
-<!--<script src="app.js"></script>-->
+<Footer />
 
 <style>
     .pricing-section {

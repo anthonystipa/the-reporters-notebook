@@ -1,18 +1,9 @@
-<!-- Main Navigation/Header -->
-<nav class="navbar glass-effect">
-    <div class="nav-content">
-        <h1 class="logo">Reporter's <span>Notebook</span></h1>
-        <div class="nav-links">
-            <a href="/#feed">News Feed</a>
-            <a href="subscribe">Subscribe Now</a>
-            <a href="about" class="active">Who We Are</a>
-            <button class="primary-btn pulse-glow"
-                onclick={()=>window.location.href='mailto:anthonystipa@gmail.com'}>
-                Verify/Submit Update
-            </button>
-        </div>
-    </div>
-</nav>
+<script lang="ts">
+	import Footer from "../../components/Footer.svelte";
+	import NavBar from "../../components/NavBar.svelte";
+
+</script>
+<NavBar newsFeedUrl={'/#feed'} currentSection={'about'}/>
 
 <!-- Main Content Area -->
 <main class="container">
@@ -31,8 +22,4 @@
     </section>
 </main>
 
-<footer class="site-footer">
-    <p>This website is property of Quickstudy Consulting, LLC. Any reproduction, counterfeit, or unauthorized copying or distribution is prohibited.</p>
-</footer>
-
-<!--<script src="app.js"></script>-->
+<Footer />

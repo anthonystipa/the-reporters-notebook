@@ -1,3 +1,8 @@
+<script lang="ts">
+	import Footer from "../../components/Footer.svelte";
+	import NavBar from "../../components/NavBar.svelte";
+
+</script>
 <!-- Dynamic Ticker Component -->
 <div class="ticker-wrapper">
     <div class="ticker-label">BREAKING MOVES</div>
@@ -10,21 +15,7 @@
     </div>
 </div>
 
-<!-- Main Navigation/Header -->
-<nav class="navbar glass-effect">
-    <div class="nav-content">
-        <h1 class="logo">Reporter's <span>Notebook</span></h1>
-        <div class="nav-links">
-            <a href="/#feed" class="active">News Feed</a>
-            <a href="subscribe">Subscribe Now</a>
-            <a href="about">Who We Are</a>
-            <button class="primary-btn pulse-glow"
-                    onclick={()=>window.location.href='mailto:anthonystipa@gmail.com'}>
-                Verify/Submit Update
-            </button>
-        </div>
-    </div>
-</nav>
+<NavBar newsFeedUrl={'/#feed'} currentSection={'layoffs'}/>
 
 <!-- Main Content Area -->
 <main class="container">
@@ -49,8 +40,4 @@
 
 </main>
 
-<footer class="site-footer">
-    <p>This website is property of Quickstudy Consulting, LLC. Any reproduction, counterfeit, or unauthorized copying or distribution is prohibited.</p>
-</footer>
-
-<!--<script src="app.js"></script>-->
+<Footer />
