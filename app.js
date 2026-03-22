@@ -103,7 +103,7 @@ const mockFeedItems = [
     {
         id: 124,
         author: 'Tina Reed',
-        role: 'Senior Health Care Editor', Axios Vitals',
+        role: 'Senior Health Care Editor, Axios Vitals',
         avatar: 'https://ui-avatars.com/api/?name=TR&background=68d391&color=fff',
         content: 'Word is that Tina Reed will be returning from maternity leave this spring to resume her co-writing duties on the Axios Vitals newsletter.',
         time: 'Recently',
