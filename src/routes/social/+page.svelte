@@ -3,10 +3,13 @@
 	import NavBar from '$components/NavBar.svelte';
 	import NewsTicker from '$components/NewsTicker.svelte';
 	import WatchListRoster from '$components/WatchListRoster.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <NewsTicker />
-<NavBar newsFeedUrl={'/#feed'} currentSection={'social'} />
+<NavBar newsFeedUrl={'/social'} currentSection={'social'} currentUser={data.user} />
 
 <!-- Main Content Area -->
 <main class="container">
@@ -27,9 +30,9 @@
 
 	<div class="filter-pills">
 		<a href="/" class="badge">All Updates</a>
-		<a href="jobs" class="badge">Job Moves</a>
-		<a href="layoffs" class="badge">Layoffs & Leaves</a>
-		<a href="social" class="badge active">Watch List Alerts</a>
+		<a href="/jobs" class="badge">Job Moves</a>
+		<a href="/layoffs" class="badge">Layoffs & Leaves</a>
+		<a href="/social" class="badge active">Watch List Alerts</a>
 	</div>
 </main>
 <Footer />

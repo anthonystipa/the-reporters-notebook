@@ -1,12 +1,15 @@
-<script>
+<script lang="ts">
 	import Footer from '$components/Footer.svelte';
 	import UnifiedFeed from '$components/UnifiedFeed.svelte';
 	import NavBar from '$components/NavBar.svelte';
 	import NewsTicker from '$components/NewsTicker.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <NewsTicker />
-<NavBar />
+<NavBar currentUser={data.user} />
 
 <!-- Main Content Area -->
 <main class="container">
@@ -16,9 +19,9 @@
 	</header>
 	<div class="filter-pills">
 		<a href="/" class="badge active">All Updates</a>
-		<a href="jobs" class="badge">Job Moves</a>
-		<a href="layoffs" class="badge">Layoffs & Leaves</a>
-		<a href="social" class="badge">Watch List Alerts</a>
+		<a href="/jobs" class="badge">Job Moves</a>
+		<a href="/layoffs" class="badge">Layoffs & Leaves</a>
+		<a href="/social" class="badge">Watch List Alerts</a>
 	</div>
 	<UnifiedFeed />
 </main>

@@ -1,24 +1,16 @@
-<script>
+<script lang="ts">
 	import UnifiedFeed from '$components/UnifiedFeed.svelte';
 	import Footer from '$components/Footer.svelte';
 	import NavBar from '$components/NavBar.svelte';
 	import NewsTicker from '$components/NewsTicker.svelte';
+
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <NewsTicker />
-
-<div class="ticker-wrapper">
-	<div class="ticker-label">BREAKING MOVES</div>
-	<div class="ticker-container">
-		<div class="ticker-content" id="ticker-content">
-			<!-- Ticker items dynamically injected via JS -->
-		</div>
-		<!-- Duplicated class for seamless infinite scroll -->
-		<div class="ticker-content" id="ticker-content-clone"></div>
-	</div>
-</div>
-
-<NavBar newsFeedUrl={'#feed'} currentSection={'jobs'} />
+<NavBar newsFeedUrl={'/jobs'} currentSection={'jobs'} currentUser={data.user} />
 
 <!-- Main Content Area -->
 <main class="container">
@@ -28,9 +20,9 @@
 	</header>
 	<div class="filter-pills">
 		<a href="/" class="badge">All Updates</a>
-		<a href="jobs" class="badge active">Job Moves</a>
-		<a href="layoffs" class="badge">Layoffs & Leaves</a>
-		<a href="social" class="badge">Watch List Alerts</a>
+		<a href="/jobs" class="badge active">Job Moves</a>
+		<a href="/layoffs" class="badge">Layoffs & Leaves</a>
+		<a href="/social" class="badge">Watch List Alerts</a>
 	</div>
 	<UnifiedFeed />
 </main>

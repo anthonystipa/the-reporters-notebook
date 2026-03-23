@@ -1,14 +1,17 @@
 <script lang="ts">
 	import Footer from '$components/Footer.svelte';
 	import NavBar from '$components/NavBar.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 
 	function handleSubscribe(e: { preventDefault: () => void }) {
 		e.preventDefault();
-		alert('Redirecting to secure payment portal...');
+		alert('Please contact us to subscribe.');
 	}
 </script>
 
-<NavBar newsFeedUrl={'/#feed'} currentSection={'subscribe'} />
+<NavBar newsFeedUrl={'/'} currentSection={'subscribe'} currentUser={data.user} />
 
 <!-- Main Content Area -->
 <main class="container">
@@ -55,7 +58,7 @@
 						style="width: 100%; box-sizing: border-box;"
 					/>
 				</div>
-				<button type="submit" class="subscribe-btn pulse-glow">Proceed to Payment</button>
+				<button type="submit" class="subscribe-btn">Proceed to Payment</button>
 			</form>
 		</div>
 	</section>

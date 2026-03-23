@@ -1,9 +1,12 @@
 <script lang="ts">
 	import Footer from '$components/Footer.svelte';
 	import NavBar from '$components/NavBar.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
-<NavBar newsFeedUrl={'/#feed'} currentSection={'about'} />
+<NavBar newsFeedUrl={'/'} currentSection={'about'} currentUser={data.user} />
 
 <!-- Main Content Area -->
 <main class="container">
