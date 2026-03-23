@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
+import type { SubscribedUser } from '$types/user';
 
 const SIGNIN_ROUTE = '/signin';
 const RESTRICTED_PATHS = new Set(['/', '/jobs', '/layoffs', '/social']);
@@ -12,9 +13,15 @@ export const load: LayoutServerLoad = async ({ locals: { safeGetSession }, cooki
 		throw redirect(303, SIGNIN_ROUTE);
 	}
 
+	const subscribedUser: SubscribedUser = {
+		id: user?.id,
+		email: user?.email,
+		paid: user?.app_metadata?.paid
+	}
+
 	return {
 		session,
-		user,
+		user: subscribedUser,
 		cookies: cookies.getAll()
 	};
 };

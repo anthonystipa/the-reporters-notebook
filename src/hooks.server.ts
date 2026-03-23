@@ -6,7 +6,6 @@ const ROOT_ROUTE = '/';
 const JOBS_ROUTE = '/jobs';
 const SOCIAL_ROUTE = '/social';
 const LAYOFFS_ROUTE = '/layoffs';
-const ABOUT_ROUTE = '/about';
 const SIGNIN_ROUTE = '/signin';
 
 // These are routes always restricted
@@ -58,8 +57,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 		return { session, user };
 	};
-
-	console.log(`Current url: ${event.url.pathname}`);
 
 	const restrictedRoute = RESTRICTED_PAGES[event.url.pathname];
 	if (restrictedRoute) {

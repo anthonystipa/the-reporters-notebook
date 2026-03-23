@@ -1,3 +1,5 @@
+import type { NewsFeedItem } from "$types/feed";
+
 export function getRecentItems(items: any[]) {
 	const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 	const FORTY_FIVE_DAYS_MS = 45 * 24 * 60 * 60 * 1000;
@@ -14,7 +16,7 @@ export function getRecentItems(items: any[]) {
 	});
 }
 
-export function getInactivityRecords(items: any[]) {
+export function getInactivityRecords(items: NewsFeedItem[]) {
 	const SIXTY_DAYS_MS = 60 * 24 * 60 * 60 * 1000;
 	const now = Date.now();
 

@@ -1,4 +1,6 @@
-export const FeedItems = [
+import type { NewsFeedItem } from '$types/feed';
+
+export const FeedItems: NewsFeedItem[] = [
 	{
 		id: 132,
 		author: 'Meeri Kim',

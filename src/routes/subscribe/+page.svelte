@@ -3,12 +3,7 @@
 	import NavBar from '$components/NavBar.svelte';
 	import type { PageProps } from './$types';
 
-	let { data }: PageProps = $props();
-
-	function handleSubscribe(e: { preventDefault: () => void }) {
-		e.preventDefault();
-		alert('Please contact us to subscribe.');
-	}
+	let { data, form }: PageProps = $props();
 </script>
 
 <NavBar newsFeedUrl={'/'} currentSection={'subscribe'} currentUser={data.user} />
@@ -37,24 +32,52 @@
 				<li>Cancel anytime</li>
 			</ul>
 
-			<form class="subscribe-form" onsubmit={handleSubscribe}>
+			<form class="subscribe-form" method="POST">
+				{#if form?.message}
+					<p class="form-message" aria-live="polite">{form.message}</p>
+				{/if}
 				<div>
 					<label for="sub-email">Email Address</label>
 					<input
 						type="email"
 						id="sub-email"
+						name="email"
 						required
 						placeholder="name@company.com"
 						style="width: 100%; box-sizing: border-box;"
 					/>
 				</div>
 				<div>
-					<label for="sub-name">Full Name</label>
+					<label for="sub-first-name">First Name</label>
 					<input
 						type="text"
-						id="sub-name"
+						id="sub-first-name"
+						name="firstName"
 						required
-						placeholder="Jane Doe"
+						placeholder="Jane"
+						style="width: 100%; box-sizing: border-box;"
+					/>
+				</div>
+				<div>
+					<label for="sub-last-name">Last Name</label>
+					<input
+						type="text"
+						id="sub-last-name"
+						name="lastName"
+						required
+						placeholder="Doe"
+						style="width: 100%; box-sizing: border-box;"
+					/>
+				</div>
+				<div>
+					<label for="sub-password">Password</label>
+					<input
+						type="password"
+						id="sub-password"
+						name="password"
+						required
+						placeholder="••••••••"
+						autocomplete="current-password"
 						style="width: 100%; box-sizing: border-box;"
 					/>
 				</div>
@@ -117,6 +140,15 @@
 		color: var(--success-color);
 		font-weight: bold;
 		margin-right: 10px;
+	}
+	.form-message {
+		margin: 0;
+		padding: 10px 12px;
+		border: 1px solid rgba(246, 173, 85, 0.5);
+		border-radius: 6px;
+		background: rgba(246, 173, 85, 0.12);
+		color: var(--text-primary);
+		font-size: 0.9rem;
 	}
 	.subscribe-form {
 		display: flex;

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { User } from '@supabase/supabase-js';
+	import type { SubscribedUser } from '$types/user';
 
 	interface Props {
 		currentSection?: string;
 		newsFeedUrl?: string;
-		currentUser?: User;
+		currentUser?: SubscribedUser;
 	}
 
 	let { currentUser, currentSection = '', newsFeedUrl = '/' }: Props = $props();
