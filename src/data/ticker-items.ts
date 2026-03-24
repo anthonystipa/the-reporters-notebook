@@ -7,7 +7,12 @@ export const TickerItems: TickerFeedItem[] = [
 		text: 'Cynthia Koons takes over as Health Editor at the Wall Street Journal',
 		date: '2026-03-11'
 	},
-	{ id: 2, type: 'move', text: 'Anjalee Khemlani is now a Contributor for Forbes', date: '2026-03-11' },
+	{
+		id: 2,
+		type: 'move',
+		text: 'Anjalee Khemlani is now a Contributor for Forbes',
+		date: '2026-03-11'
+	},
 	{
 		id: 3,
 		type: 'move',

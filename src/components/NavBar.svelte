@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { SubscribedUser } from '$types/user';
+	import type { UserProfile } from '$types/user';
 
 	interface Props {
 		currentSection?: string;
 		newsFeedUrl?: string;
-		currentUser?: SubscribedUser;
+		currentUser?: UserProfile;
 	}
 
 	let { currentUser, currentSection = '', newsFeedUrl = '/' }: Props = $props();

@@ -1,5 +1,5 @@
 export interface BaseFeedItem {
-    id: number;
+	id: number;
 	date: string;
 }
 

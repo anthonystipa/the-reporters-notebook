@@ -24,11 +24,11 @@ export const actions: Actions = {
 			options: {
 				data: {
 					first_name: firstName,
-					last_name: lastName,
+					last_name: lastName
 				},
-				emailRedirectTo: 'http://localhost:5173',
+				emailRedirectTo: 'http://localhost:5173'
 			}
-		})
+		});
 
 		if (error) {
 			return fail(400, {
