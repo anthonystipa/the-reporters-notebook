@@ -6,3 +6,12 @@ create table "ticker_feed_items" (
   "inserted_at" timestamp with time zone default timezone('utc'::text, now()) not null,
   "updated_at" timestamp with time zone default timezone('utc'::text, now()) not null
 );
+
+alter table "ticker_feed_items" enable row level security;
+
+drop policy if exists "Authenticated users can read ticker feed items" on "ticker_feed_items";
+create policy "Authenticated users can read ticker feed items"
+  on "ticker_feed_items"
+  for select
+  to authenticated
+  using (true);

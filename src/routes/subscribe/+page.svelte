@@ -8,7 +8,6 @@
 
 <NavBar newsFeedUrl={'/'} currentSection={'subscribe'} currentUser={data.user} />
 
-<!-- Main Content Area -->
 <main class="container">
 	<header class="page-header">
 		<span class="header-badge">Premium Access</span>
@@ -81,7 +80,7 @@
 						style="width: 100%; box-sizing: border-box;"
 					/>
 				</div>
-				<button type="submit" class="subscribe-btn">Proceed to Payment</button>
+				<button type="submit" class="subscribe-btn">Sign up</button>
 			</form>
 		</div>
 	</section>

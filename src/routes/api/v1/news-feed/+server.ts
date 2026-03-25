@@ -1,9 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { FeedItems } from '$data/feed-items';
+import { getAllNewsFeedItems } from '$lib/server/news-feed-dao';
 
-export const GET: RequestHandler = async ({ request }) => {
-	const newsFeedItems = FeedItems;
-
+export const GET: RequestHandler = async ({ locals }) => {
+	const newsFeedItems = await getAllNewsFeedItems(locals.supabase);
 	return json({ newsFeedItems });
 };

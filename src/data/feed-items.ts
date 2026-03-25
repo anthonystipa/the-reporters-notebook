@@ -1,5 +1,6 @@
 import type { NewsFeedItem } from '$types/feed';
 
+// NOTE: This data is the original sample data.
 export const FeedItems: NewsFeedItem[] = [
 	{
 		id: 132,

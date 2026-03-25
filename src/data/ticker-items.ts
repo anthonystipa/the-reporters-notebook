@@ -1,5 +1,6 @@
 import type { TickerFeedItem } from '$types/feed';
 
+// NOTE: This data is the original sample data.
 export const TickerItems: TickerFeedItem[] = [
 	{
 		id: 1,
