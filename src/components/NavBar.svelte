@@ -44,3 +44,51 @@
 		</div>
 	</div>
 </nav>
+
+<style>
+	/* Navigation */
+	.navbar {
+		position: fixed;
+		top: 40px;
+		width: 100%;
+		padding: 16px 0;
+		z-index: 999;
+	}
+
+	.nav-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 24px;
+	}
+
+	.logo {
+		font-size: 1.5rem;
+	}
+
+	.logo span {
+		color: var(--accent-color);
+		font-weight: 300;
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+	}
+
+	.nav-links a {
+		color: var(--text-secondary);
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 500;
+		transition: var(--transition-smooth);
+	}
+
+	.nav-links a:hover,
+	.nav-links a.active {
+		color: var(--text-primary);
+	}
+</style>

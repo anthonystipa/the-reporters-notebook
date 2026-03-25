@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { FeedItems } from '$data/feed-items';
 	import { getRecentItems } from '$lib/feed-utils';
+
+	import type { NewsFeedItem } from '$types/feed';
+
+	interface Props {
+		newsFeedItems: NewsFeedItem[];
+	}
+	let { newsFeedItems = [] }: Props = $props();
 
 	function initFeed() {
 		const mainGrid = document.getElementById('main-feed');
@@ -9,16 +15,7 @@
 
 		// Determine current page to set active pill and filter data
 		const currentPath = window.location.pathname.split('/').pop() || '/';
-		const pills = document.querySelectorAll('.filter-pills a.badge');
-		pills.forEach((pill) => {
-			if (pill.getAttribute('href') === currentPath) {
-				pill.classList.add('active');
-			} else {
-				pill.classList.remove('active');
-			}
-		});
-
-		let recentFeedItems = getRecentItems(FeedItems);
+		let recentFeedItems = getRecentItems(newsFeedItems);
 
 		// Filter Feed based on category
 		if (currentPath === 'jobs') {

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { TickerItems } from '$data/ticker-items';
 	import { getRecentItems } from '$lib/feed-utils';
+	import type { TickerFeedItem } from '$types/feed';
+
+	interface Props {
+		tickerItems: TickerFeedItem[];
+	}
+	let { tickerItems = [] }: Props = $props();
 
 	function initTicker() {
 		const content = document.getElementById('ticker-content');
@@ -9,7 +14,7 @@
 
 		if (!content || !clone) return;
 
-		const recentTickerItems = getRecentItems(TickerItems);
+		const recentTickerItems = getRecentItems(tickerItems);
 
 		let html = '';
 		recentTickerItems.forEach((item) => {

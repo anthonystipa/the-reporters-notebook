@@ -6,7 +6,8 @@ create table "news_feed_items" (
   "content" text,
   "time" text,
   "source" text,
-  "date" date,
+  "link" text,
+  "date" date not null,
   "inserted_at" timestamp with time zone default timezone('utc'::text, now()) not null,
   "updated_at" timestamp with time zone default timezone('utc'::text, now()) not null
 );

@@ -5,11 +5,12 @@
 	import NewsTicker from '$components/NewsTicker.svelte';
 
 	import type { PageProps } from './$types';
+	import FilterPills from '$components/FilterPills.svelte';
 
 	let { data }: PageProps = $props();
 </script>
 
-<NewsTicker />
+<NewsTicker tickerItems={data.tickerItems} />
 <NavBar newsFeedUrl={'/layoffs'} currentSection={'layoffs'} currentUser={data.user} />
 
 <!-- Main Content Area -->
@@ -19,12 +20,7 @@
 		<h2>Reducing spam, spin, and PR ignorance since 2026</h2>
 	</header>
 
-	<div class="filter-pills">
-		<a href="/" class="badge">All Updates</a>
-		<a href="/jobs" class="badge">Job Moves</a>
-		<a href="/layoffs" class="badge active">Layoffs & Leaves</a>
-		<a href="/social" class="badge">Watch List Alerts</a>
-	</div>
+	<FilterPills currentSection="/layoffs" />
 
 	<p
 		style="color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 32px auto; font-size: 0.95rem; line-height: 1.5; font-style: italic;"
@@ -33,7 +29,7 @@
 		the industry altogether.
 	</p>
 
-	<UnifiedFeed />
+	<UnifiedFeed newsFeedItems={data.newsFeedItems} />
 </main>
 
 <Footer />
