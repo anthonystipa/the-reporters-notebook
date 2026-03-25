@@ -26,7 +26,7 @@ export const actions: Actions = {
 					first_name: firstName,
 					last_name: lastName
 				},
-				emailRedirectTo: 'http://localhost:5173'
+				emailRedirectTo: `${url.origin}/welcome`
 			}
 		});
 
