@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
-	let message = 'Confirming your email...';
+	let message = $state('Confirming your email...');
 
 	onMount(() => {
 		// Wait a moment, then redirect to home if session was established
@@ -14,7 +14,6 @@
 	});
 </script>
 
-<!-- Main Content Area -->
 <main class="container">
 	<header class="page-header">
 		<span class="header-badge">Email Confirmation</span>

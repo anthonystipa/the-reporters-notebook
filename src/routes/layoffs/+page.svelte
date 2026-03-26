@@ -13,15 +13,12 @@
 <NewsTicker tickerItems={data.tickerItems} />
 <NavBar newsFeedUrl={'/layoffs'} currentSection={'layoffs'} currentUser={data.user} />
 
-<!-- Main Content Area -->
 <main class="container">
 	<header class="page-header">
 		<span class="header-badge">Latest from the Frontlines of Healthcare Reporting</span>
 		<h2>Reducing spam, spin, and PR ignorance since 2026</h2>
 	</header>
-
 	<FilterPills currentSection="/layoffs" />
-
 	<p
 		style="color: var(--text-secondary); text-align: center; max-width: 600px; margin: 0 auto 32px auto; font-size: 0.95rem; line-height: 1.5; font-style: italic;"
 	>

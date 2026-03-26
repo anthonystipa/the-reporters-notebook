@@ -8,11 +8,9 @@
 		newsFeedItems: NewsFeedItem[];
 	}
 	let { newsFeedItems = [] }: Props = $props();
+	let mainGrid: HTMLElement | undefined = $state();
 
 	function initFeed() {
-		const mainGrid = document.getElementById('main-feed');
-		if (!mainGrid) return;
-
 		// Determine current page to set active pill and filter data
 		const currentPath = window.location.pathname.split('/').pop() || '/';
 		let recentFeedItems = getRecentItems(newsFeedItems);
@@ -98,8 +96,9 @@
 				</article>
 			`;
 		});
-
-		mainGrid.innerHTML = html;
+		if (mainGrid) {
+			mainGrid.innerHTML = html;
+		}
 	}
 	onMount(() => {
 		initFeed();
@@ -107,6 +106,6 @@
 </script>
 
 <!-- Unified Feed Container -->
-<section class="feed-grid unified-feed" id="main-feed">
+<section bind:this={mainGrid} class="feed-grid unified-feed" id="main-feed">
 	<!-- Feed cards injected via JS -->
 </section>
