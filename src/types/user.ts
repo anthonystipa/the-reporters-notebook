@@ -4,4 +4,5 @@ export type UserProfile = {
 	firstName?: string;
 	lastName?: string;
 	paid?: boolean;
+	role?: 'user' | 'admin';
 };

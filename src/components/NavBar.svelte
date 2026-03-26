@@ -48,6 +48,9 @@
 		<div class="nav-links">
 			{#if currentUser}
 				<a href={newsFeedUrl} class:active={isNewsFeedSection(currentSection)}>News Feed</a>
+				{#if currentUser.role === 'admin'}
+					<a href="/admin" class:active={currentSection === 'admin'}>Admin</a>
+				{/if}
 			{:else}
 				<a href="/signin" class:active={currentSection === 'signin'}>Sign in</a>
 				<a href="/subscribe" class:active={currentSection === 'subscribe'}>Subscribe Now</a>
@@ -66,14 +69,27 @@
 	{#if menuOpen}
 		<div class="mobile-menu glass-effect">
 			{#if currentUser}
-				<a href={newsFeedUrl} class:active={isNewsFeedSection(currentSection)} onclick={closeMenu}>News Feed</a>
+				<a href={newsFeedUrl} class:active={isNewsFeedSection(currentSection)} onclick={closeMenu}
+					>News Feed</a
+				>
+				{#if currentUser.role === 'admin'}
+					<a href="/admin" class:active={currentSection === 'admin'} onclick={closeMenu}>Admin</a>
+				{/if}
 			{:else}
 				<a href="/signin" class:active={currentSection === 'signin'} onclick={closeMenu}>Sign in</a>
-				<a href="/subscribe" class:active={currentSection === 'subscribe'} onclick={closeMenu}>Subscribe Now</a>
+				<a href="/subscribe" class:active={currentSection === 'subscribe'} onclick={closeMenu}
+					>Subscribe Now</a
+				>
 			{/if}
 			<a href="/about" class:active={currentSection === 'about'} onclick={closeMenu}>Who We Are</a>
 			{#if currentUser}
-				<button class="primary-btn mobile-btn" onclick={() => { closeMenu(); verifySubmitUpdate(); }}>Verify/Submit Update</button>
+				<button
+					class="primary-btn mobile-btn"
+					onclick={() => {
+						closeMenu();
+						verifySubmitUpdate();
+					}}>Verify/Submit Update</button
+				>
 				<form method="POST" action="/signout">
 					<button class="primary-btn mobile-btn" type="submit">Sign out</button>
 				</form>

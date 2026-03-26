@@ -18,7 +18,8 @@ export const load: LayoutServerLoad = async ({ locals: { safeGetSession }, cooki
 		userProfile = {
 			id: user?.id,
 			email: user?.email,
-			paid: user?.app_metadata?.paid
+			paid: user?.app_metadata?.paid,
+			role: user?.app_metadata?.role
 		};
 	}
 

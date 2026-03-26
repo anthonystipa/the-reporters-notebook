@@ -6,6 +6,7 @@ const ROOT_ROUTE = '/';
 const JOBS_ROUTE = '/jobs';
 const SOCIAL_ROUTE = '/social';
 const LAYOFFS_ROUTE = '/layoffs';
+const ADMIN_ROUTE = '/admin';
 const SIGNIN_ROUTE = '/signin';
 
 // These are routes always restricted
@@ -65,6 +66,18 @@ export const handle: Handle = async ({ event, resolve }) => {
 		if (!session?.session) {
 			console.log('No session found.  Redirecting to: ', restrictedRoute);
 			throw redirect(303, restrictedRoute);
+		}
+	}
+
+	if (event.url.pathname === ADMIN_ROUTE || event.url.pathname.startsWith(`${ADMIN_ROUTE}/`)) {
+		const session = await event.locals.safeGetSession();
+		if (!session?.session) {
+			throw redirect(303, SIGNIN_ROUTE);
+		}
+
+		const role = session.user?.app_metadata?.role;
+		if (role !== 'admin') {
+			throw redirect(303, ROOT_ROUTE);
 		}
 	}
 
