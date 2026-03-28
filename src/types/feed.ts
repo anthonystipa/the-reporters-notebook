@@ -6,10 +6,11 @@ export interface BaseFeedItem {
 export interface NewsFeedItem extends BaseFeedItem {
 	author: string;
 	role: string;
-	avatar: string;
+	avatar?: string;
 	content: string;
 	time: string;
 	source: string;
+    is_direct_from_source: boolean;
 	link?: string;
 }
 

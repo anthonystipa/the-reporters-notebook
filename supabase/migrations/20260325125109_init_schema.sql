@@ -8,7 +8,7 @@
     "time" text,
     "source" text,
     "link" text,
-    "date" date,
+    "date" date not null,
     "inserted_at" timestamp with time zone not null default timezone('utc'::text, now()),
     "updated_at" timestamp with time zone not null default timezone('utc'::text, now())
       );

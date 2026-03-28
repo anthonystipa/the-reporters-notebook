@@ -3,7 +3,7 @@ import type { NewsFeedItem } from '$types/feed';
 export async function getAllNewsFeedItems(supabase: any): Promise<NewsFeedItem[]> {
 	const { data, error } = await supabase
 		.from('news_feed_items')
-		.select('id, author, role, avatar, content, time, source, link, date')
+		.select('id, author, role, avatar, content, time, source, is_direct_from_source, link, date')
 		.order('date', { ascending: false })
 		.order('id', { ascending: false });
 
