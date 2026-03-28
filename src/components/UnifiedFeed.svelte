@@ -10,6 +10,21 @@
 	let { newsFeedItems = [] }: Props = $props();
 	let mainGrid: HTMLElement | undefined = $state();
 
+	function generateAvatarInitials(author: string) {
+		const cleaned = author.trim();
+		if (!cleaned) return 'RN';
+
+		// If only one word was found, limit the initials to 2 characters
+		const words = cleaned.split(/\s+/).filter(Boolean);
+		if (words.length === 1) {
+			return words[0].slice(0, 2).toUpperCase();
+		}
+
+		const first = words[0]?.[0] ?? '';
+		const last = words[words.length - 1]?.[0] ?? '';
+		return `${first}${last}`.toUpperCase();
+	}
+
 	function initFeed() {
 		// Determine current page to set active pill and filter data
 		const currentPath = window.location.pathname.split('/').pop() || '/';
@@ -71,10 +86,12 @@
 				? `<a class="jump-link" href="${item.link}" target="_blank" rel="noopener noreferrer" title="View Post">↗</a>`
 				: '';
 
+			const initials = generateAvatarInitials(item.author);
+			const avatar = item.avatar ?? `https://ui-avatars.com/api/?name=${initials}&background=random`;
 			html += `
 				<article class="feed-card glass-effect" style="animation-delay: ${index * 0.1}s">
 					<div class="card-header">
-						<img src="${item.avatar}" alt="${item.author}" class="avatar">
+						<img src="${avatar}" alt="${item.author}" class="avatar">
 						<div class="author-info">
 							<h4>${item.author} ${badgeHtml}</h4>
 							<p>${item.role}</p>
