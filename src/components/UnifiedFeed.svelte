@@ -44,6 +44,7 @@
 		recentFeedItems.forEach((item, index) => {
 			// Evaluate categories for the badges
 			const isSystemAlert = item.id && item.id.toString().startsWith('inact');
+			// TODO: This should be supplied at time of entry.
 			const isDirectSource =
 				item.author === 'Cynthia Koons' ||
 				item.author === 'Anjalee Khemlani' ||
