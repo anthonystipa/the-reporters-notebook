@@ -1,8 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
-const CHECK_EMAIL_ROUTE = '/check-email';
-
 export const actions: Actions = {
 	default: async ({ request, locals, url }) => {
 		const formData = await request.formData();
@@ -38,7 +36,7 @@ export const actions: Actions = {
 		}
 
 		const redirectTo = url.searchParams.get('redirectTo');
-		const nextPath = redirectTo?.startsWith('/') ? redirectTo : CHECK_EMAIL_ROUTE;
+		const nextPath = redirectTo?.startsWith('/') ? redirectTo : `/check-email?email=${email}`;
 
 		throw redirect(303, nextPath);
 	}

@@ -53,7 +53,7 @@
 				{/if}
 			{:else}
 				<a href="/signin" class:active={currentSection === 'signin'}>Sign in</a>
-				<a href="/subscribe" class:active={currentSection === 'subscribe'}>Subscribe Now</a>
+				<a href="/signup" class:active={currentSection === 'signup'}>Subscribe Now</a>
 			{/if}
 			<a href="/about" class:active={currentSection === 'about'}>Who We Are</a>
 			{#if currentUser}
@@ -77,7 +77,7 @@
 				{/if}
 			{:else}
 				<a href="/signin" class:active={currentSection === 'signin'} onclick={closeMenu}>Sign in</a>
-				<a href="/subscribe" class:active={currentSection === 'subscribe'} onclick={closeMenu}
+				<a href="/signup" class:active={currentSection === 'signup'} onclick={closeMenu}
 					>Subscribe Now</a
 				>
 			{/if}

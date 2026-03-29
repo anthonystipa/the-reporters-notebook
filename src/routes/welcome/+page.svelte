@@ -29,11 +29,6 @@
 </main>
 
 <style>
-	:global(body) {
-		/* Remove the fixed ticker for welcome page */
-		padding-top: 0;
-	}
-
 	.container {
 		max-width: 1200px;
 		margin: 0 auto;

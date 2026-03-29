@@ -10,7 +10,7 @@ export interface NewsFeedItem extends BaseFeedItem {
 	content: string;
 	time: string;
 	source: string;
-    is_direct_from_source: boolean;
+	is_direct_from_source: boolean;
 	link?: string;
 }
 

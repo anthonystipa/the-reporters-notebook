@@ -6,7 +6,7 @@
 	let { data, form }: PageProps = $props();
 </script>
 
-<NavBar newsFeedUrl={'/'} currentSection={'subscribe'} currentUser={data.user} />
+<NavBar newsFeedUrl={'/'} currentSection={'signup'} currentUser={data.user} />
 
 <main class="container">
 	<header class="page-header">

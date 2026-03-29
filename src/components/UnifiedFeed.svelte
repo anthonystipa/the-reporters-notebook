@@ -87,7 +87,8 @@
 				: '';
 
 			const initials = generateAvatarInitials(item.author);
-			const avatar = item.avatar ?? `https://ui-avatars.com/api/?name=${initials}&background=random`;
+			const avatar =
+				item.avatar ?? `https://ui-avatars.com/api/?name=${initials}&background=random`;
 			html += `
 				<article class="feed-card glass-effect" style="animation-delay: ${index * 0.1}s">
 					<div class="card-header">
