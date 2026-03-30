@@ -6,8 +6,8 @@
 		tickerItems: TickerFeedItem[];
 	}
 	let { tickerItems = [] }: Props = $props();
-	let recentTickerItems = $derived.by(() => {
-		return getRecentItems(tickerItems);
+	let recentTickerItems: TickerFeedItem[] = $derived.by(() => {
+		return getRecentItems(tickerItems) as TickerFeedItem[];
 	});
 
 	function calculateAnimationDuration(recentTickerItems: TickerFeedItem[]) {
@@ -28,7 +28,7 @@
 					>{item.type === 'move' ? 'Job Move' : 'New Story'}</span
 				>
 				<strong>UPDATE:</strong>
-				{item.text}
+				{item.content}
 			</div>
 		{/each}
 	</div>

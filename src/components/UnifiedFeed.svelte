@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getRecentItems } from '$lib/feed-utils';
+	import { getRecentItems, isWireNews } from '$lib/feed-utils';
 
 	import type { NewsFeedItem } from '$types/feed';
 
@@ -28,7 +28,7 @@
 	function initFeed() {
 		// Determine current page to set active pill and filter data
 		const currentPath = window.location.pathname.split('/').pop() || '/';
-		let recentFeedItems = getRecentItems(newsFeedItems);
+		let recentFeedItems = getRecentItems(newsFeedItems) as NewsFeedItem[];
 
 		// Filter Feed based on category
 		if (currentPath === 'jobs') {
@@ -59,24 +59,12 @@
 		recentFeedItems.forEach((item, index) => {
 			// Evaluate categories for the badges
 			const isSystemAlert = item.id && item.id.toString().startsWith('inact');
-			const isDirectSource = item.is_direct_from_source;
-			const isWireNews = [
-				'Press Release',
-				'Publication',
-				'Internal Memo',
-				'News Reports',
-				'Industry News',
-				'Analysis',
-				'LinkedIn',
-				'X / Twitter'
-			].includes(item.source);
-
 			let badgeHtml = '';
 			if (isSystemAlert) {
 				badgeHtml = `<span class="category-badge watch-badge" title="System Generator">👀 WATCH LIST</span>`;
-			} else if (isDirectSource) {
+			} else if (item.is_direct_from_source) {
 				badgeHtml = `<a href="/" class="category-badge direct-badge" title="Go to Direct from the Source">🎯 DIRECT FROM THE SOURCE</a>`;
-			} else if (isWireNews) {
+			} else if (isWireNews(item.source)) {
 				badgeHtml = `<a href="/" class="category-badge wire-badge" title="Go to Wire News">🗞️ WIRE</a>`;
 			} else {
 				badgeHtml = `<a href="/" class="category-badge gossip-badge" title="Go to Gossip Mill">☕ GOSSIP</a>`;

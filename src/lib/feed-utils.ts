@@ -1,6 +1,6 @@
-import type { NewsFeedItem } from '$types/feed';
+import type { NewsFeedItem, BaseFeedItem } from '$types/feed';
 
-export function getRecentItems(items: any[]) {
+export function getRecentItems(items: BaseFeedItem[]) {
 	const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 	const FORTY_FIVE_DAYS_MS = 45 * 24 * 60 * 60 * 1000;
 	const now = Date.now();
@@ -68,4 +68,17 @@ export function getInactivityRecords(items: NewsFeedItem[]) {
 	});
 
 	return inactiveItems;
+}
+
+export function isWireNews(source: string) {
+	return [
+		'Press Release',
+		'Publication',
+		'Internal Memo',
+		'News Reports',
+		'Industry News',
+		'Analysis',
+		'LinkedIn',
+		'X / Twitter'
+	].includes(source);
 }
