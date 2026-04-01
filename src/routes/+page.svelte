@@ -12,7 +12,6 @@
 <NewsTicker tickerItems={data.tickerItems} />
 <NavBar currentUser={data.user} />
 
-<!-- Main Content Area -->
 <main class="container">
 	<header class="page-header">
 		<span class="header-badge">Latest from the Frontlines of Healthcare Reporting</span>

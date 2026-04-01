@@ -1,5 +1,11 @@
 import type { NewsFeedItem, BaseFeedItem } from '$types/feed';
 
+export function sortByNewestDate(a: BaseFeedItem, b: BaseFeedItem): number {
+	const dateA = a.date ? new Date(a.date).getTime() : 0;
+	const dateB = b.date ? new Date(b.date).getTime() : 0;
+	return dateB - dateA;
+}
+
 export function getRecentItems(items: BaseFeedItem[]) {
 	const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 	const FORTY_FIVE_DAYS_MS = 45 * 24 * 60 * 60 * 1000;
@@ -14,6 +20,30 @@ export function getRecentItems(items: BaseFeedItem[]) {
 
 		return now - itemDate <= threshold;
 	});
+}
+
+export function getRecentJobFeedItems(items: BaseFeedItem[]) {
+	const recentFeedItems = getRecentItems(items) as NewsFeedItem[];
+	return recentFeedItems
+		.filter((item) => /join|hire|new role|new gig|promot/i.test(item.content))
+		.sort(sortByNewestDate);
+}
+export function getRecentLayoffFeedItems(items: BaseFeedItem[]) {
+	const recentFeedItems = getRecentItems(items) as NewsFeedItem[];
+	return recentFeedItems
+		.filter((item) => /layoff|laid off|retir/i.test(item.content))
+		.sort(sortByNewestDate);
+}
+
+export function getRecentSocialFeedItems(items: BaseFeedItem[]) {
+	const recentFeedItems = getRecentItems(items) as NewsFeedItem[];
+	return recentFeedItems
+		.filter(
+			(item) =>
+				['X / Twitter', 'LinkedIn', 'Personal News'].includes(item.source) ||
+				/personal news/i.test(item.content)
+		)
+		.sort(sortByNewestDate);
 }
 
 export function getInactivityRecords(items: NewsFeedItem[]) {
@@ -81,4 +111,9 @@ export function isWireNews(source: string) {
 		'LinkedIn',
 		'X / Twitter'
 	].includes(source);
+}
+
+export function isSystemAlert(item: BaseFeedItem) {
+	// TODO: This is a crazy ai choice...  We can add some kind of field to indicate system alert.
+	return item.id && item.id.toString().startsWith('inact');
 }
