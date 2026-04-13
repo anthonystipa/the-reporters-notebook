@@ -7,16 +7,16 @@ export function sortByNewestDate(a: BaseFeedItem, b: BaseFeedItem): number {
 }
 
 export function getRecentItems(items: BaseFeedItem[]) {
-	const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+	const SIXTY_DAYS_MS = 60 * 24 * 60 * 60 * 1000;
 	const FORTY_FIVE_DAYS_MS = 45 * 24 * 60 * 60 * 1000;
 	const now = Date.now();
 	return items.filter((item) => {
 		if (!item.date) return true;
 		const itemDate = new Date(item.date).getTime();
 
-		// If they retired, sunset them after 45 days. Otherwise 30 days.
+		// If they retired, sunset them after 45 days. Otherwise 60 days.
 		const isRetirement = /retir|step down/i.test(item.content);
-		const threshold = isRetirement ? FORTY_FIVE_DAYS_MS : THIRTY_DAYS_MS;
+		const threshold = isRetirement ? FORTY_FIVE_DAYS_MS : SIXTY_DAYS_MS;
 
 		return now - itemDate <= threshold;
 	});
